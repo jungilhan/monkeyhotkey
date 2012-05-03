@@ -1,0 +1,238 @@
+﻿<!--
+    Copyright (C) 2012  jungil han <jungil.han@gmail.com>
+
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2
+    of the License, or any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		
+		<!-- Style -->
+		<link type="text/css" rel="stylesheet" href="style/style.css" />
+		
+		<!-- Script -->
+		<script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="script/jquery.easing.1.3.js"></script>		
+		<script type="text/javascript" src="script/script.js"></script>
+		
+		<title>Monkey Hotkey</title>
+	</head>
+	<body>
+		<div id="popup">
+		</div>	
+		<div id='main-activity' class='activity'>
+			<div id="listview">
+				<div id="listview-header">
+					<div id="listview-header-text">
+						내가 등록한 프로그램
+					</div>
+				</div>
+				<div class="listview-item listview-item-last listview-item-guide">
+					<img class="listview-item-icon" src="images/exclamation.png">
+					<div class="listview-item-content">
+						<h3 class="listview-item-content-title">프로그램을 등록하세요</h3>
+						<p class="listview-item-content-hotkey">자주 사용하는 프로그램을 끌어 놓으세요</p>
+					</div>
+				</div>
+				
+				<!--
+				<div class="listview-item">		
+					<img class="listview-item-icon" src="icons/CProgramFilesMozillaFirefoxfirefox.exe.png"/>		
+					<div class="listview-item-content">	
+						<div class="listview-item-setup">
+							<img src="images/setup18x18_n.png"/>
+						</div>
+						<div>
+							<img class="listview-item-remove" src="images/remove12x12.png" />
+							<h3 class="listview-item-content-title">Firefox AAAAAAAAAAAAAAAAAAA</h3>						
+						</div>
+						<p class="listview-item-content-hotkey"><span class="mark-ctrl">Ctrl</span>+<span class="mark-key">F2</span></p>		
+					</div>
+				</div>
+				<div class="listview-item listview-item-last">		
+					<img class="listview-item-icon" src="icons/CQtSDKQtCreatorbinqtcreator.exe.png"/>		
+					<div class="listview-item-content">		
+						<div class="listview-item-setup">		
+							<img src="images/setup18x18_n.png"/>		
+						</div>		
+						<h3 class="listview-item-content-title">Qt Creator</h3>		
+						<p class="listview-item-content-hotkey"><span class="mark-ctrl">Ctrl</span>+<span class="mark-alt">Alt</span>+<span class="mark-shift">Shift</span>+<span class="mark-key">F2</span></p>		
+					</div>		
+				</div>
+				-->
+			</div>
+		</div> <!-- main activity -->
+		
+		<div id='hotkey-activity' class='activity'>
+			<div id="hotkeyview">
+				<div id="hotkeyview-header">
+					<div id="hotkeyview-header-text">
+						단축키 설정
+					</div>
+				</div>
+				
+				<h3>사용할 단축키를 입력하세요.</h3>
+				<input type="text" name="input" id="hotkey-input"/>
+				
+				<h3>사용할 제어키를 선택하세요.</h3>
+				<div id="hotkey-control-selector">
+					<p class="field switch">
+						<label class="cb-enable"><span>Ctrl</span></label>
+						<label class="cb-disable selected"><span>Off</span></label>
+						<input type="checkbox" id="hotkey-checkbox-ctrl" class="hotkey-checkbox-ctrl checkbox" name="control-selector" />
+					</p>
+					<p class="field switch">
+						<label class="cb-enable"><span>Alt</span></label>
+						<label class="cb-disable selected"><span>Off</span></label>
+						<input type="checkbox" id="hotkey-checkbox-alt" class="hotkey-checkbox-alt checkbox" name="control-selector" />
+					</p>
+					<p class="field switch">
+						<label class="cb-enable"><span>Shift</span></label>
+						<label class="cb-disable selected"><span>Off</span></label>
+						<input type="checkbox" id="hotkey-checkbox-shift" class="hotkey-checkbox-shift checkbox" name="control-selector" />
+					</p>					
+				</div>
+				
+				<div class="separator-bar unselectable"></div>
+				<div class="confirm-button-group">
+					<a href="#" id="hotkey-ok" class="confirm-button green-button">확인</a>
+					<a href="#" id="hotkey-cancel" class="confirm-button green-button">취소</a>				
+				</div>
+			</div>
+		</div> <!-- hotkey activity -->		
+		
+		<div id='delete-activity' class='activity'>
+			<div id="deleteview">
+				<div id="deleteview-header">
+					<div id="deleteview-header-text">
+						삭제
+					</div>
+				</div>
+				
+				<h3>삭제할 아이템을 선택하세요.</h3>
+				<div class="delete-item-container">
+				</div>
+				
+				<div class="separator-bar unselectable"></div>
+				<div class="confirm-button-group">
+					<a href="#" id="delete-ok" class="confirm-button red-button">확인</a>
+					<a href="#" id="delete-cancel" class="confirm-button red-button">취소</a>				
+				</div>
+			</div>
+		</div> <!-- delete activity -->
+		
+		<div id='setup-activity' class='activity'>
+			<div id="setupview">
+				<div id="setupview-header">
+					<div id="setupview-header-text">
+						설정
+					</div>
+				</div>
+				
+				<!--
+				<div class='setup-item-container'>
+					<h3>자동 업데이트</h3>	
+					<div class="field switch" style="margin-right: -11px;">
+						<label class="cb-enable"><span>On</span></label>
+						<label class="cb-disable selected"><span>Off</span></label>
+						<input type="checkbox" id="setup-auto-update" class="setup-auto-update" name="setup-selector" />					
+					</div>
+				</div>
+				-->
+				
+				<div class='setup-item-container'>
+					<h3>프로그램 자동실행</h3>
+					<div class="field switch" style="margin-right: -11px;">
+						<label class="cb-enable"><span>On</span></label>
+						<label class="cb-disable selected"><span>Off</span></label>
+						<input type="checkbox" id="setup-autorun" class="setup-autorun checkbox" name="setup-selector" />
+					</div>					
+				</div>
+				
+				<div class='setup-item-container'>
+					<h3>항상 위에 보이기</h3>
+					<div class="field switch" style="margin-right: -11px;">
+						<label class="cb-enable"><span>On</span></label>
+						<label class="cb-disable selected"><span>Off</span></label>
+						<input type="checkbox" id="setup-topmost" class="setup-topmost checkbox" name="setup-selector" />
+					</div>					
+				</div>
+				
+				<!--
+				<div class='setup-item-container'>
+					<h3>투명도 설정하기</h3>
+					<div>
+						<input id="setup-transparency" type="range" value="0" min="1" max="10" />
+					</div>
+				</div>
+				-->
+
+				<div class='setup-item-container'>
+					<h3>언어 선택하기</h3>
+					<div>
+						<select id="setup-language">
+							<option>한국어</option>
+						</select>				
+					</div>					
+				</div>
+				
+				<br>
+				<div class="separator-bar unselectable"></div>
+				<div class="confirm-button-group">
+					<a href="#" id="setup-ok" class="confirm-button blue-button">확인</a>
+					<a href="#" id="setup-cancel" class="confirm-button blue-button">취소</a>				
+				</div>		
+			</div>
+		</div> <!-- setup activity -->
+
+		<div id='info-activity' class='activity'>
+			<div id="infoview">
+				<div id="infoview-header">
+					<div id="infoview-header-text">
+						정보
+					</div>
+				</div>
+				
+				<h3>프로그램 정보 - <a id="update" href="#">업데이트 확인하기</a></h3>
+				<ul>
+					<li>버전 - 2.0.0 RC r211</li>
+					<li>배포 - 2012년 03월 31일, 20시 18분</li>
+					<li>제작 - <a href="http://code.google.com/p/monkeyhotkey" class="open-url">code.google.com/p/monkeyhotkey</a></li>
+				</ul>
+				
+				<h3>다음의 오픈소스를 기반으로 제작됨</h3>
+				<ul>
+					<li>Qt4 - <a href="http://qt.nokia.com" class="open-url">qt.nokia.com</a></li>
+					<li>PySide - <a href="http://www.pyside.org" class="open-url">www.pyside.org</a></li>
+					<li>jQuery - <a href="http://www.jquery.com" class="open-url">www.jquery.com</a></li>
+				</ul>
+				
+				<h3>버그 제출하기</h3>
+				<ul>
+					<li><a href="http://code.google.com/p/monkeyhotkey/issues/entry?template=Defect%20report%20from%20user" class="open-url">버그를 발견하셨나요?</a></li>
+				</ul>
+				
+				<br>
+				<div class="separator-bar unselectable"></div>
+				<div class="confirm-button-group">
+					<a href="#" id="info-ok" class="confirm-button purple-button">확인</a>
+				</div>				
+			</div>
+		</div> <!-- info activity -->		
+	</body>
+</html>

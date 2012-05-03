@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="logo32x32">ui/resource/logo32x32.png</file>
+        <file alias="about18x18">ui/resource/about18x18.png</file>
+        <file alias="close18x18">ui/resource/close18x18.png</file>
+        <file alias="info24x24">ui/resource/info24x24.png</file>
+        <file alias="trash24x24">ui/resource/trash24x24.png</file>
+        <file alias="setup24x24">ui/resource/setup24x24.png</file>
+        <file alias="monkeyhotkey128x128">ui/resource/monkeyhotkey128x128.png</file>
+        <file alias="title">ui/resource/title.png</file>
+        <file alias="tray_shutdown16x16">ui/resource/tray_shutdown16x16.png</file>
+        <file alias="tray_info16x16">ui/resource/tray_info16x16.png</file>
+        <file alias="tray_home16x16">ui/resource/tray_home16x16.png</file>
+    </qresource>
+</RCC>

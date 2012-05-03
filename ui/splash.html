@@ -1,0 +1,68 @@
+﻿<!--
+    Copyright (C) 2012  jungil han <jungil.han@gmail.com>
+
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2
+    of the License, or any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		
+		<!-- Script -->
+		<script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="script/jQueryRotateCompressed.2.1.js"></script>		
+		
+		<title>Monkey Hotkey - Splash</title>
+		
+		<style type="text/css">
+			body, h1, h2, h3, h4, h5, h6, p, a, label, span, div, img {
+				font-family: 맑은 고딕, arial, serif;
+			}
+			
+			body {
+				background-color: #494949;
+				background: url(images/splash_bg.png) repeat;
+			}
+			
+			.loading-text {
+				text-align: center;
+				color: #A7A7A7;
+				text-shadow: 2px 2px #031124;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="margin-top: 80px; text-align: center;">
+			<img src="images/monkeyhotkey.png"/>
+		</div>
+		<h3 class="loading-text">로딩중입니다.</h3>
+	</body>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var rotation = function() {
+				$('img').rotate({
+					angle: 0,
+					animateTo: 360,
+					callback: rotation,
+					duration: 2000
+				});
+			}
+			
+			rotation();
+		});
+	</script>
+</html>
